@@ -37,7 +37,7 @@ function App() {
 				street: { name, number }
 			},
 			login: { password },
-			picture: { thumbnail: image }
+			picture: { medium: image }
 		} = results[0]
 
 		setPerson({
@@ -49,9 +49,9 @@ function App() {
 			password,
 			image
 		})
-		setTitle('name')
-		setValue(person.name)
 		setLoading(false)
+		setTitle('name')
+		if (person) setValue(person.name)
 	}
 
 	useEffect(() => {
