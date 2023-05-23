@@ -34,24 +34,27 @@ function App() {
 			phone,
 			dob: { age },
 			location: {
-				street: { name, number }
+				street: { name: str, number }
 			},
 			login: { password },
 			picture: { medium: image }
 		} = results[0]
 
-		setPerson({
-			name: `${title} ${first} ${last}`,
-			email,
-			age,
-			street: `${name} , ${number}`,
-			phone,
-			password,
-			image
+		setPerson(prev => {
+			const newPerson = {
+				name: `${title} ${first} ${last}`,
+				email,
+				age,
+				street: `${str} , ${number}`,
+				phone,
+				password,
+				image
+			}
+			setValue(newPerson.name)
+			return newPerson
 		})
 		setLoading(false)
 		setTitle('name')
-		if (person) setValue(person.name)
 	}
 
 	useEffect(() => {
